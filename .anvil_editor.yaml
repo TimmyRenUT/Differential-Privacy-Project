@@ -1,0 +1,34 @@
+unique_ids:
+  assets:
+    armory_blurred_level_1.png: '1732839438040787846867536.5353'
+    armory_blurred_level_10.png: '1732839570981342773180668.17664'
+    armory_blurred_level_2.png: '173283944840969534129099.02124'
+    armory_blurred_level_3.png: '1732839532050131671093267.7465'
+    armory_blurred_level_4.png: '1732839538449907863596306.3855'
+    armory_blurred_level_5.png: '173283954363276345772946.69853'
+    armory_blurred_level_6.png: '1732839549347298298914322.21124'
+    armory_blurred_level_7.png: '173283955659797587956014.91887'
+    armory_blurred_level_8.png: '1732839561742423884263755.45715'
+    armory_blurred_level_9.png: '1732839566301145480774433.6748'
+    garden_blurred_level_1.png: '173283957966534078256951.50368'
+    garden_blurred_level_10.png: '1732839629928364056939466.9737'
+    garden_blurred_level_2.png: '1732839586624758041673772.4003'
+    garden_blurred_level_3.png: '1732839590737936698675728.4094'
+    garden_blurred_level_4.png: '1732839595262721227472541.4121'
+    garden_blurred_level_5.png: '1732839601710870565571355.0005'
+    garden_blurred_level_6.png: '173283961105749710023350.10844'
+    garden_blurred_level_7.png: '1732839616955440124167414.8717'
+    garden_blurred_level_8.png: '1732839621595553305502989.5594'
+    garden_blurred_level_9.png: '1732839625493916629055258.8065'
+    labeled_map.png: '1732831373954508358666518.62524'
+    minecraft_book.png: '1733353821005577207508129.8914'
+    standard-page.html: O5W2TP3PEL2WPUAYYZJD3OKJKBAQC2TV
+    theme.css: LM23X4YE36YQ5D3PHBNBVQHUQKVQ3WA7
+  forms:
+    ClueForm: '1733353206950895920199241.1245'
+    GameScreen: '173283431265755350922839.95646'
+    GameScreenRegions: '1732760385536142509982570.2305'
+    Welcome: JWHBW7IOLVXLB2TOHV4LYPR5TFQ26NTC
+  modules: {}
+  scripts: {}
+  server_modules: {}
