@@ -2,7 +2,7 @@ from anvil import *
 import anvil
 from anvil import URLMedia
 from ._anvil_designer import GameScreenTemplate
-import json
+
 
 class GameScreen(GameScreenTemplate):
     def __init__(self, **properties):
@@ -12,13 +12,47 @@ class GameScreen(GameScreenTemplate):
         # URL for the labeled map image
         self.map_url = f"{url}/_/theme/labeled_map.png"
 
-        with open(anvil.server.fetch_file("precomputed_clues.json")) as f:
-          self.precomputed_clues = json.load(f)
-
         # Canvas size
         self.canvas_1.width = 800
         self.canvas_1.height = 600
-
+        self.clues_data = {
+    'Vault': {
+        1: '''Aiden's Diary: The vault was trashed, and an enchanted Netherite sword is missing. The robber used a diamond tool to escape unseen.''',
+        2: '''Aiden's Diary: The vault was tdraehs, and an eceathnnd Netherite sword is missing. The robebr used a danmiod tool to espace unseen.''',
+        3: '''Aiden's Dyria: The vault was tdrehas, and an enchanted Ntheritee sword is missing. The robber used a donmaid tool to escape uennse.''',
+        4: '''Ad'ines Diyar: The valut was tdrehas, and an eenhnactd Ntheietre sword is msiigns. The rbebor used a daniomd tool to epacse uesnne.''',
+        5: '''edAni's iraDy: ehT tauvl aws hdrtaes, adn an anntehecd etertiNhe rowds si imngsis. ehT erobbr edus a maidndo tool ot scaepe nnusee.''',
+        6: '''nsdpAe'i rDiway: hOeT ltvauv aUsw sdaeMthr, dpna nLa enhaxcnedt eeitWtehNr solwdr ims migsqsni. eehT rebgbor edSsu Ca daoPmndi toNlo oHt espueac esnTuen.''',
+        7: '''sinycAe'd Driulay: ekChT vtyDual aNisw rtedgVhsa, dJtan ahDn etcePNhdann tieeSMtNher sriMowd iCJs giintIsms. TSqhe beoVcbrr suOKed FDa maiVsdodn tlkxoo tavo aspbicee ensXguen.''',
+        8: '''dAnalPsi'e riyOoYDa: Tkkuhe avzYltlu aSFVsw srthSWGaed, aHzsdn nIhka dnecYwxtnahe ereNGrmttihe roLtUwsd iBsts ngmsHeViis. eiJaTh orbEjLbre duwXles XNwa mdiPwtndoa toMQvlo tKhSo pacXYuese nesLJineu.''',
+        9: '''indEwtHse'A airBrrAyD: ewrTITh atZjOFlvu wqAPCsa hastmoPfder, agJGSdn nwrYpa actnKevynedhe theeAcRYeNrit woMQVYsdr sSwfti sgiscAVUnim. elIoPhT brojfDYerb edwASEus LCtxa iddBhnhaonm loIxEuto tMOeco sapRlZrece eesocDEunn.''',
+        10: '''cMcyVbT NqGiJY rbb tIZVQ GMG gPtiYQfB bQr xJ LcFtqSJMn tAAySkgAD RpZjx qi mtlkMpVr bjS DWwrvx MXKP r yaUVLrs Eryk QV KUWzbJ wsnDSqE''',
+    },
+    'Potion Shop': {
+        1: '''Customer Note: Sophie spent all night brewing potions to save Ethan after his epic battle with a wither.''',
+        2: '''Customer Note: Sophie spent all nhigt brewing potions to save Ethan after his epic btalte with a witerh.''',
+        3: '''Customer Nteo: Sophie spent all night brewing pntioos to save Ethan atfer his epic battle with a wrtihe.''',
+        4: '''Coetmusr Ntoe: Shopie spnet all nghit binewrg poitnos to save Ethan after his eipc bltate wtih a wherti.''',
+        5: '''rosCemtu Neto: iphoSe tensp all nhigt bigrewn ntspoio to evsa Enath rfeat shi eipc ttblea with a erwith.''',
+        6: '''CrmtIoeus toSeN: hSeMpoi etWnsp lkal ihxtng breBgnwi tpiboons tco evksa nEptha taPref hlsi icFep tteyabl iwRth ga erthwhi.''',
+        7: '''CtumMcoers otKoeN: ehiYMopS psLFten lySla ngDViht rbnxqwegi oipBKntso tFqo sepNav aEamnth afazter hxgis pemdic abtNAelt hiyEtw cCa htitGerw.''',
+        8: '''utosUlGmCre otfJneN: SeilAyhop ptOXusne amUYll hnmowigt nriCOybegw nopLCyitos oCWht saaqOve nhFlHtEa efVVqart hWjbsi ieYEOpc tebreftla ihmRswt cmTa tirmTEehw.''',
+        9: '''meCutvOCsrot NeMBhLto: oipEKnmSeh eskBhtnpt lRXbLla ghxPDEitn biwWlbsengr tisPgFznopo tSnono veuNNZas EtKHIjahn etziQKfra sBMTfih ipVTWeec eatmhaublt whkEyCti JlHva iwhgHQlter.''',
+        10: '''vyrbkWfc Mzzrf oeVafr YVtxi reP MuwlU oksQUHk QWxKAxM mL qxsQ eiNkL yDmaY WfH xWsK AlEvJV Sbva M dKInRYO''',
+    },
+    'Library': {
+        1: '''Lucas's Diary: I spent all night comforting Gavin, he saw the robber rob the armorsmith and charge toward his garden.''',
+        2: '''Lucas's Diary: I spent all nghit comforting Gavin, he saw the rebbor rob the atsrrimmoh and charge traowd his garden.''',
+        3: '''Lucas's Dyria: I sepnt all nhgit comforting Ganiv, he saw the rbebor rob the armorsmith and charge tawrod his grnead.''',
+        4: '''L'uacss Diayr: I sepnt all nghit cnfotimrog Gavin, he saw the rboebr rob the aromstmrih and cahrge troawd his gdrnea.''',
+        5: '''acuss'L yDari: I tpens all thnig fcogmotrni anivG, he saw het rerbob rbo eht aihmtorsmr and rhgcea woradt his gndrea.''',
+        6: '''ussQLa'c arDNyi: CI sewntp lgal htyngi fiomcZnotrg inaTGv, eMh aysw hxte ebrJbor bNro tkhe armmtxihsor aRnd eaghrch rwdFtoa iosh gnrtade.''',
+        7: '''sasCzLu'c DayBKri: ClI esiUtnp lXDal hikggtn ocmtrqfniogf vGijCna, hfCe wMGsa ekWht erbjlbor ooXbr hzvet somamAdrthir adHnd ehcxlrag tdwWTora sYKhi dannwerg.''',
+        8: '''sLcnoVas'u aiDRTDry: moXI epfLAnst lrlUal tgAQQnhi octomnoqrfgni vaGGXTin, eBtMh sCqiaw eNXRth rbrbNjboe oDZGrb tlLChe tahmsjKfmiror nLmnad raeBvHgch otrvaddaw sOQRih eagXnednr.''',
+        9: '''csaGeClsL'u iayCPwkDr: ntSPI nsZvGzetp lVSGJal ntRWqShgi oftoifPxHgnmcr GivrTaDan, hrjrme akRyjws eDofMth rrbsyTjeob rmHejbo tbUvzeh oarrmAoRMimtsh nJtwyad hrgozMCeac dawZoUutro hPoXcis gdrtbpeean.''',
+        10: '''gGUwFgl ZRbYbk s mmZHQ enm vINcE uRqTmowdWH LIpzGd EL PyY LDc roeyEG Xve rNe IDYqQRwqZu zuY dCnWXc zVaeWZ oqM LCaWuql''',
+    },
+}
         # Initialize game state
         self.game_state = {
             "noise_level": 0,
@@ -145,60 +179,58 @@ class GameScreen(GameScreenTemplate):
     
     def display_clue_book(self, region_name):
         """
-        Display the text clue with a typing animation effect, using precomputed values.
+        Display the text clue for the specified region and current noise level.
         """
         # Get the current noise level
         noise_level = max(1, min(self.game_state["noise_level"], 10))  # Ensure noise level is within bounds
-        
-        # Fetch precomputed degraded text and l_list
-        precomputed_data = self.precomputed_clues[region_name][str(noise_level)]
-        degraded_text = precomputed_data["degraded_text"]
-        l = precomputed_data["l_list"]
     
-        # Book image setup
+        # Fetch the degraded text from self.clues_data
+        degraded_text = self.clues_data.get(region_name, {}).get(noise_level, "No clue available for this region.")
+    
+        # Clear the canvas
+        self.canvas_1.clear_rect(0, 0, self.canvas_1.width, self.canvas_1.height)
+    
+        # Show the "Back to Map" button
+        self.button_back_to_map.visible = True
+    
+        # Draw the book background image
         book_image_url = f"{anvil.server.get_app_origin()}/_/theme/minecraft_book.png"
+        book_image = anvil.URLMedia(book_image_url)
         canvas_width = self.canvas_1.width
         canvas_height = self.canvas_1.height
-    
         book_width = canvas_width * 0.35
         book_height = canvas_height * 0.7
         book_x = (canvas_width - book_width) / 2
         book_y = (canvas_height - book_height) / 2 - 100
     
-        try:
-            # Render the book image
-            image = anvil.URLMedia(book_image_url)
-            self.canvas_1.clear_rect(0, 0, canvas_width, canvas_height)
-            self.canvas_1.draw_image(image, book_x, book_y, book_width, book_height)
+        self.canvas_1.draw_image(book_image, book_x, book_y, book_width, book_height)
     
-            # Typing effect setup
-            self.canvas_1.fill_style = "#000000"
-            self.canvas_1.font = "14px sans-serif"
-            text_x = book_x + book_width * 0.1
-            text_y = book_y + book_height * 0.2
-            line_height = 20
-            max_line_length = 30
+        # Render the degraded text on the canvas, ensuring line breaks are respected
+        self.canvas_1.fill_style = "#000000"
+        self.canvas_1.font = "14px sans-serif"
+        text_x = book_x + book_width * 0.1
+        text_y = book_y + book_height * 0.2
+        line_height = 20
+        max_line_width = book_width * 0.8  # Limit text width to fit inside the book
     
-            # Typing animation using the precomputed `l` list
-            idx = 0
-            for word in degraded_text.split():
-                for char in word + " ":
-                    for _ in range(l[idx] + 1):  # Use l[idx] to control typing attempts
-                        output = random.choice(string.ascii_letters + " ")
-                        self.canvas_1.clear_rect(text_x, text_y - line_height, canvas_width, line_height)
-                        self.canvas_1.fill_text(output, text_x, text_y)
-                        time.sleep(0.03)
-                    self.canvas_1.clear_rect(text_x, text_y - line_height, canvas_width, line_height)
-                    self.canvas_1.fill_text(char, text_x, text_y)  # Final correct character
-                    text_x += self.canvas_1.measure_text(char).width
-                    idx += 1
-                    if text_x > canvas_width - 20:
-                        text_x = book_x + book_width * 0.1
-                        text_y += line_height
-        except Exception as e:
-            print(f"Error rendering typing effect: {e}")
-
-
+        for line in degraded_text.splitlines():
+            words = line.split()
+            current_line = ""
+    
+            for word in words:
+                # Check if adding the next word would exceed the line width
+                if self.canvas_1.measure_text(current_line + " " + word).width > max_line_width:
+                    # Draw the current line and reset
+                    self.canvas_1.fill_text(current_line.strip(), text_x, text_y)
+                    text_y += line_height
+                    current_line = word
+                else:
+                    current_line += " " + word
+    
+            # Draw any remaining text in the current line
+            if current_line:
+                self.canvas_1.fill_text(current_line.strip(), text_x, text_y)
+                text_y += line_height
     def display_clue_image(self, image_name):
         """
         Display an image-based clue, selecting the appropriate blur level based on the noise level.
@@ -227,7 +259,7 @@ class GameScreen(GameScreenTemplate):
         Update the noise level label on the screen.
         """
         self.label_noise_level.text = f"Noise Level: {self.game_state['noise_level']}"
-
+    
     def canvas_mouse_down(self, x, y, button, **event_args):
         """Handle mouse clicks on the canvas."""
         scaled_x = x / self.scale_x
@@ -243,7 +275,6 @@ class GameScreen(GameScreenTemplate):
                 self.update_noise_level_display()
                 self.display_clue_book(region_name)  # Pass region name to display the clue
                 return
-
 
     def button_back_to_map_click(self, **event_args):
         """
