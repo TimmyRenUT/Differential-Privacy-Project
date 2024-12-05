@@ -9,9 +9,18 @@ components:
     name: label_noise_level
     properties: {}
     type: Label
+  - event_bindings: {click: button_back_to_map_click}
+    layout_properties: {grid_position: 'PLLVLH,CLZZXA'}
+    name: button_back_to_map
+    properties: {align: left, background: 'theme:Primary', icon: 'fa:arrow-circle-left', text: Back to Map, visible: false}
+    type: Button
   - layout_properties: {grid_position: 'HRLFJP,MRCJFC'}
     name: canvas_1
-    properties: {height: 100}
+    properties:
+      height: 100
+      margin: [0, null, 0, null]
+      spacing_above: none
+      spacing_below: none
     type: Canvas
   layout_properties: {slot: default}
   name: content_panel
