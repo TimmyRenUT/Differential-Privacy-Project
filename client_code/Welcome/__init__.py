@@ -13,16 +13,9 @@ class Welcome(WelcomeTemplate):
     self.init_components(**properties)
     self.text_to_display = """Welcome, Agents! We need your help to save the Minecraft world.
 
-An evil pillager, called The Marauder, is trying to take over everything. To succeed, they need four special things:
+A robber has stolen the kingdom's all powerful Netherite Sword. This sword has been enchanted to hide the identity of those who hold it. We need to find as much information about the robber as possible before the swords enchantment hides it.
 
-  The Cartographer
-  The Librarian
-  The Pig
-  The Red Sheep
-  
-We found pictures of these targets, but we don’t know exactly where they are. Your mission is to find them before The Marauder can!
-
-Look closely at each picture, find the targets, and stop The Marauder’s evil plan.
+There a 5 important locations to look at. The garden, vault, armor shop, potion shop, and the library. Watch out, as you engage with more people, the enchantment will become stronger and information will be harder and harder to get.
 
 Press "Start Mission" to begin!"""
     # Counter for the position of next character to display

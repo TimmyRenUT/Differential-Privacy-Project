@@ -2,7 +2,7 @@ from anvil import *
 import anvil
 from anvil import URLMedia
 from ._anvil_designer import GameScreenTemplate
-
+import json
 
 class GameScreen(GameScreenTemplate):
     def __init__(self, **properties):
@@ -11,6 +11,9 @@ class GameScreen(GameScreenTemplate):
         url = server.get_app_origin()
         # URL for the labeled map image
         self.map_url = f"{url}/_/theme/labeled_map.png"
+
+        with open(anvil.server.fetch_file("precomputed_clues.json")) as f:
+          self.precomputed_clues = json.load(f)
 
         # Canvas size
         self.canvas_1.width = 800
@@ -140,56 +143,61 @@ class GameScreen(GameScreenTemplate):
             print("Rendering image clue...")  # Debugging
             self.display_clue_image(self.current_region["content"])
     
-    def display_clue_book(self, clue_text):
+    def display_clue_book(self, region_name):
         """
-        Display the text clue as if it were written in a Minecraft book.
+        Display the text clue with a typing animation effect, using precomputed values.
         """
+        # Get the current noise level
+        noise_level = max(1, min(self.game_state["noise_level"], 10))  # Ensure noise level is within bounds
+        
+        # Fetch precomputed degraded text and l_list
+        precomputed_data = self.precomputed_clues[region_name][str(noise_level)]
+        degraded_text = precomputed_data["degraded_text"]
+        l = precomputed_data["l_list"]
+    
+        # Book image setup
         book_image_url = f"{anvil.server.get_app_origin()}/_/theme/minecraft_book.png"
         canvas_width = self.canvas_1.width
         canvas_height = self.canvas_1.height
     
-        # Define the desired book dimensions (e.g., 50% width, 70% height of the canvas)
         book_width = canvas_width * 0.35
         book_height = canvas_height * 0.7
-    
-        # Calculate position to center the book
         book_x = (canvas_width - book_width) / 2
-        book_y = (canvas_height - book_height) /2 -100
+        book_y = (canvas_height - book_height) / 2 - 100
     
         try:
-            print(f"Loading book image from {book_image_url}...")  # Debugging
+            # Render the book image
             image = anvil.URLMedia(book_image_url)
-            self.canvas_1.clear_rect(0, 0, canvas_width, canvas_height)  # Clear previous content
+            self.canvas_1.clear_rect(0, 0, canvas_width, canvas_height)
             self.canvas_1.draw_image(image, book_x, book_y, book_width, book_height)
-            print("Book image rendered.")  # Debugging
-        except Exception as e:
-            print(f"Error rendering book image: {e}")
     
-        try:
-            # Adjust text position and size relative to the scaled book
-            self.canvas_1.fill_style = "#000000"  # Black text
-            self.canvas_1.font = "14px sans-serif"  # Smaller font for better fit
-            text_x = book_x + book_width * 0.1  # Add padding inside the book
+            # Typing effect setup
+            self.canvas_1.fill_style = "#000000"
+            self.canvas_1.font = "14px sans-serif"
+            text_x = book_x + book_width * 0.1
             text_y = book_y + book_height * 0.2
             line_height = 20
             max_line_length = 30
     
-            # Wrap and render text inside the book
-            words = clue_text.split()
-            line = ""
-            for word in words:
-                test_line = f"{line} {word}".strip()
-                if len(test_line) <= max_line_length:
-                    line = test_line
-                else:
-                    self.canvas_1.fill_text(line, text_x, text_y)
-                    text_y += line_height
-                    line = word
-            if line:
-                self.canvas_1.fill_text(line, text_x, text_y)
-            print("Clue text rendered successfully.")
+            # Typing animation using the precomputed `l` list
+            idx = 0
+            for word in degraded_text.split():
+                for char in word + " ":
+                    for _ in range(l[idx] + 1):  # Use l[idx] to control typing attempts
+                        output = random.choice(string.ascii_letters + " ")
+                        self.canvas_1.clear_rect(text_x, text_y - line_height, canvas_width, line_height)
+                        self.canvas_1.fill_text(output, text_x, text_y)
+                        time.sleep(0.03)
+                    self.canvas_1.clear_rect(text_x, text_y - line_height, canvas_width, line_height)
+                    self.canvas_1.fill_text(char, text_x, text_y)  # Final correct character
+                    text_x += self.canvas_1.measure_text(char).width
+                    idx += 1
+                    if text_x > canvas_width - 20:
+                        text_x = book_x + book_width * 0.1
+                        text_y += line_height
         except Exception as e:
-            print(f"Error rendering clue text: {e}")
+            print(f"Error rendering typing effect: {e}")
+
 
     def display_clue_image(self, image_name):
         """
@@ -224,7 +232,7 @@ class GameScreen(GameScreenTemplate):
         """Handle mouse clicks on the canvas."""
         scaled_x = x / self.scale_x
         scaled_y = y / self.scale_y
-
+    
         for region_name, region_data in self.regions.items():
             if (
                 region_data["x"] < scaled_x < region_data["x"] + region_data["width"]
@@ -233,8 +241,9 @@ class GameScreen(GameScreenTemplate):
                 print(f"{region_name} clicked!")  # Debugging
                 self.game_state["noise_level"] += 1
                 self.update_noise_level_display()
-                self.show_clue(region_data)
+                self.display_clue_book(region_name)  # Pass region name to display the clue
                 return
+
 
     def button_back_to_map_click(self, **event_args):
         """
