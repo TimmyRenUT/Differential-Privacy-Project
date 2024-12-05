@@ -67,7 +67,7 @@ class GameScreen(GameScreenTemplate):
                 "width": 200,
                 "height": 200,
                 "type": "image",
-                "content": "armor_shop.png"
+                "content": "armory.png"
             }
         }
 
@@ -193,12 +193,18 @@ class GameScreen(GameScreenTemplate):
 
     def display_clue_image(self, image_name):
         """
-        Display an image-based clue.
+        Display an image-based clue, selecting the appropriate blur level based on the noise level.
         """
-        image_url = f"{anvil.server.get_app_origin()}/_/theme/{image_name}"
+        # Determine the current noise level (clamp between 1 and 10 to match the assets)
+        noise_level = max(1, min(self.game_state["noise_level"], 10))
+        
+        # Construct the image name based on the noise level
+        image_file = image_name.replace(".png", f"_blurred_level_{noise_level}.png")
+        image_url = f"{anvil.server.get_app_origin()}/_/theme/{image_file}"
+        
         canvas_width = self.canvas_1.width
         canvas_height = self.canvas_1.height
-
+    
         try:
             print(f"Loading clue image from {image_url}...")  # Debugging
             image = anvil.URLMedia(image_url)
@@ -206,6 +212,7 @@ class GameScreen(GameScreenTemplate):
             print("Clue image rendered successfully.")  # Debugging
         except Exception as e:
             print(f"Error rendering clue image: {e}")
+    
 
     def update_noise_level_display(self):
         """
