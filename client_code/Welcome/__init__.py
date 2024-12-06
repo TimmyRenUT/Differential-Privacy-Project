@@ -38,7 +38,6 @@ Press "Start Mission" to begin!"""
       self.label_1.text += '▮'
     else:
       # Stop the typing effect
-      self.text_box_1.visible = True
       anvil.js.call_js('stopTypingEffect')
     # Any code you write here will run before the form opens.
 

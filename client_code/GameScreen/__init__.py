@@ -18,39 +18,39 @@ class GameScreen(GameScreenTemplate):
         self.clues_data = {
     'Vault': {
         1: '''Aiden's Diary: The vault was trashed, and an enchanted Netherite sword is missing. The robber used a diamond tool to escape unseen.''',
-        2: '''Aiden's Diary: The vault was tdraehs, and an eceathnnd Netherite sword is missing. The robebr used a danmiod tool to espace unseen.''',
-        3: '''Aiden's Dyria: The vault was tdrehas, and an enchanted Ntheritee sword is missing. The robber used a donmaid tool to escape uennse.''',
-        4: '''Ad'ines Diyar: The valut was tdrehas, and an eenhnactd Ntheietre sword is msiigns. The rbebor used a daniomd tool to epacse uesnne.''',
-        5: '''edAni's iraDy: ehT tauvl aws hdrtaes, adn an anntehecd etertiNhe rowds si imngsis. ehT erobbr edus a maidndo tool ot scaepe nnusee.''',
-        6: '''nsdpAe'i rDiway: hOeT ltvauv aUsw sdaeMthr, dpna nLa enhaxcnedt eeitWtehNr solwdr ims migsqsni. eehT rebgbor edSsu Ca daoPmndi toNlo oHt espueac esnTuen.''',
-        7: '''sinycAe'd Driulay: ekChT vtyDual aNisw rtedgVhsa, dJtan ahDn etcePNhdann tieeSMtNher sriMowd iCJs giintIsms. TSqhe beoVcbrr suOKed FDa maiVsdodn tlkxoo tavo aspbicee ensXguen.''',
-        8: '''dAnalPsi'e riyOoYDa: Tkkuhe avzYltlu aSFVsw srthSWGaed, aHzsdn nIhka dnecYwxtnahe ereNGrmttihe roLtUwsd iBsts ngmsHeViis. eiJaTh orbEjLbre duwXles XNwa mdiPwtndoa toMQvlo tKhSo pacXYuese nesLJineu.''',
-        9: '''indEwtHse'A airBrrAyD: ewrTITh atZjOFlvu wqAPCsa hastmoPfder, agJGSdn nwrYpa actnKevynedhe theeAcRYeNrit woMQVYsdr sSwfti sgiscAVUnim. elIoPhT brojfDYerb edwASEus LCtxa iddBhnhaonm loIxEuto tMOeco sapRlZrece eesocDEunn.''',
-        10: '''cMcyVbT NqGiJY rbb tIZVQ GMG gPtiYQfB bQr xJ LcFtqSJMn tAAySkgAD RpZjx qi mtlkMpVr bjS DWwrvx MXKP r yaUVLrs Eryk QV KUWzbJ wsnDSqE''',
+        2: '''Aiden's Diary: The vault was tahsedr, and an ecannethd Netherite sword is missing. The rebobr used a danmoid tool to ecaspe unseen.''',
+        3: '''Aiden's Driya: The vlaut was tdaeshr, and an enchanted Nhtietere sword is missing. The robber uesd a dnmioad tool to escape uennse.''',
+        4: '''A'idnes Driya: The vault was thseard, and an enaetnhcd Nihrettee sorwd is msnsiig. The rbeobr used a dianmod tool to eacspe unnees.''',
+        5: '''sAnid'e iDrya: eTh avltu swa ardehts, and an adenecthn trheieNte rwsdo si siimsgn. ehT borrbe eusd a didonma ltoo ot eaescp esneun.''',
+        6: '''iseGAn'd ayrODi: heTe vtfual svwa stehNadr, nIad aNn adcehetnnh tNehwetrie odVsrw sQi imssEngi. ejhT rbbOore esldu Da onmpddai loUot tLo pceisae eeuCsnn.''',
+        7: '''dniaGAs'e ryiywaD: eSnhT uthealv sRdwa radhWZset, nrNda aEin etaneSdhcne rtetuqeheiN dolVrsw scGi mgisJgnis. hAjeT oerVlrbb edMfsu wpa doaQlmind toHlol oaDt spcCDeea esnsmeun.''',
+        8: '''nsiNpldA'e aiDZdTry: hJfVeT vteRjaul aQSCws searSZNhtd, dngtna anEfn ennewDIhdtca teriDRHehetN odCnYwrs iHcvs isgmJPJnis. hLceeT rebwJUrbo edtMnus xPva oddtpinami otnwgol oMUXt acsTNtpee senSnsenu.''',
+        9: '''esnADamdA'i iayWSHgrD: eEdGVTh vtExTDalu shNrbaw resaYfCPdht, dyWlean anRzFn tcnnvJFkeedah rteiWpDUetNhe rdnkJpsow szIqoi nmishlXYigs. enzvmhT rrbCseHboe edixGous pugEa dadhvFomion oocszrlt tEavZo seajLYBcep nunmtMTese.''',
+        10: '''bcDfsMk tvCbxD Aau RquDq AZy msUtpnAK VSP XS UXFQKOXll ZKsfcCjLe aXeNa GB URKTtDrh doc OPTLmY cdqK P guymsyX zdVz Hu wlciFt cSmaEGV''',
     },
     'Potion Shop': {
         1: '''Customer Note: Sophie spent all night brewing potions to save Ethan after his epic battle with a wither.''',
-        2: '''Customer Note: Sophie spent all nhigt brewing potions to save Ethan after his epic btalte with a witerh.''',
-        3: '''Customer Nteo: Sophie spent all night brewing pntioos to save Ethan atfer his epic battle with a wrtihe.''',
-        4: '''Coetmusr Ntoe: Shopie spnet all nghit binewrg poitnos to save Ethan after his eipc bltate wtih a wherti.''',
-        5: '''rosCemtu Neto: iphoSe tensp all nhigt bigrewn ntspoio to evsa Enath rfeat shi eipc ttblea with a erwith.''',
-        6: '''CrmtIoeus toSeN: hSeMpoi etWnsp lkal ihxtng breBgnwi tpiboons tco evksa nEptha taPref hlsi icFep tteyabl iwRth ga erthwhi.''',
-        7: '''CtumMcoers otKoeN: ehiYMopS psLFten lySla ngDViht rbnxqwegi oipBKntso tFqo sepNav aEamnth afazter hxgis pemdic abtNAelt hiyEtw cCa htitGerw.''',
-        8: '''utosUlGmCre otfJneN: SeilAyhop ptOXusne amUYll hnmowigt nriCOybegw nopLCyitos oCWht saaqOve nhFlHtEa efVVqart hWjbsi ieYEOpc tebreftla ihmRswt cmTa tirmTEehw.''',
-        9: '''meCutvOCsrot NeMBhLto: oipEKnmSeh eskBhtnpt lRXbLla ghxPDEitn biwWlbsengr tisPgFznopo tSnono veuNNZas EtKHIjahn etziQKfra sBMTfih ipVTWeec eatmhaublt whkEyCti JlHva iwhgHQlter.''',
-        10: '''vyrbkWfc Mzzrf oeVafr YVtxi reP MuwlU oksQUHk QWxKAxM mL qxsQ eiNkL yDmaY WfH xWsK AlEvJV Sbva M dKInRYO''',
+        2: '''Customer Note: Sphioe spent all ngiht brewing potions to save Ethan after his epic baltte with a wrhite.''',
+        3: '''Customer Neto: Sophie snpet all nhgit brewing potions to svae Ethan after his epic battle with a whteir.''',
+        4: '''Csteoumr Ntoe: Spoihe spnet all nhigt bnewrig pootnis to svae Etahn aeftr his epic btatle with a wteihr.''',
+        5: '''remousCt etoN: eSipoh snpet all ntghi inbgrwe tnooips to seav htnEa eraft his peic labtet itwh a irwteh.''',
+        6: '''rseuImCot toWNe: ipoKehS perstn lVal itlnhg wniNrebg tnsHpooi oKt savev taInEh teIarf sEhi ecCip bltXeta tifhw Na tihzwre.''',
+        7: '''CreszUtoum otMaNe: eSibfhpo tpYfnes lVTal nhcntig webICnirg tooiDispn tSmo aepJsv ntRqhEa ftuDare icyhs epmAic aebJjtlt itjmhw FKa whrgNeti.''',
+        8: '''toreQArumCs eoATVNt: hSofudpie npxWhtes aiQill igkFfhnt rbeZPHwign stoeMKnpio ocFlt vsIzwae anjiBhEt arLZntef ifZchs eckphpi abtXwRlte whnibti Ovra tiwZTMreh.''',
+        9: '''smueMPvbtrCo tNPGUGeo: SpejegQhoi ntaLoppse lLBoDla tgoeRfinh bernwNnwign noiNQunpsot tNAlIo svzhfGae EawtxLnht afcfkPtre sKewAhi ecxNQHip ltbBkVEtea whFQPUit fjZea iweDltQhrt.''',
+        10: '''ccyHWgzt KMXbt LqvlfM ZCtTI KkF uAloQ GeCiejk CKzxMwR mJ jHoy PXvWV CdnaP dJo xmJL FGaEKz RHmD n XQDNKfb''',
     },
     'Library': {
-        1: '''Lucas's Diary: I spent all night comforting Gavin, he saw the robber rob the armorsmith and charge toward his garden.''',
-        2: '''Lucas's Diary: I spent all nghit comforting Gavin, he saw the rebbor rob the atsrrimmoh and charge traowd his garden.''',
-        3: '''Lucas's Dyria: I sepnt all nhgit comforting Ganiv, he saw the rbebor rob the armorsmith and charge tawrod his grnead.''',
-        4: '''L'uacss Diayr: I sepnt all nghit cnfotimrog Gavin, he saw the rboebr rob the aromstmrih and cahrge troawd his gdrnea.''',
-        5: '''acuss'L yDari: I tpens all thnig fcogmotrni anivG, he saw het rerbob rbo eht aihmtorsmr and rhgcea woradt his gndrea.''',
-        6: '''ussQLa'c arDNyi: CI sewntp lgal htyngi fiomcZnotrg inaTGv, eMh aysw hxte ebrJbor bNro tkhe armmtxihsor aRnd eaghrch rwdFtoa iosh gnrtade.''',
-        7: '''sasCzLu'c DayBKri: ClI esiUtnp lXDal hikggtn ocmtrqfniogf vGijCna, hfCe wMGsa ekWht erbjlbor ooXbr hzvet somamAdrthir adHnd ehcxlrag tdwWTora sYKhi dannwerg.''',
-        8: '''sLcnoVas'u aiDRTDry: moXI epfLAnst lrlUal tgAQQnhi octomnoqrfgni vaGGXTin, eBtMh sCqiaw eNXRth rbrbNjboe oDZGrb tlLChe tahmsjKfmiror nLmnad raeBvHgch otrvaddaw sOQRih eagXnednr.''',
-        9: '''csaGeClsL'u iayCPwkDr: ntSPI nsZvGzetp lVSGJal ntRWqShgi oftoifPxHgnmcr GivrTaDan, hrjrme akRyjws eDofMth rrbsyTjeob rmHejbo tbUvzeh oarrmAoRMimtsh nJtwyad hrgozMCeac dawZoUutro hPoXcis gdrtbpeean.''',
-        10: '''gGUwFgl ZRbYbk s mmZHQ enm vINcE uRqTmowdWH LIpzGd EL PyY LDc roeyEG Xve rNe IDYqQRwqZu zuY dCnWXc zVaeWZ oqM LCaWuql''',
+        1: '''Lucas's Diary: I spent all night comforting Gavin, he saw the robber rob the armor shop and charge toward his garden.''',
+        2: '''Lucas's Diary: I spent all ngiht comforting Gavin, he saw the roebbr rob the aomrr shop and chgare toward his gaedrn.''',
+        3: '''Lucas's Draiy: I spnet all night comforting Gvain, he saw the rbboer rob the armor sohp and cahgre toward his garden.''',
+        4: '''Lsca'us Driay: I spent all ngiht ctomfinrog Gnvia, he saw the rebbor rob the amror sohp and chrgae toarwd his gedanr.''',
+        5: '''cauLs's iaryD: I spetn lla gnthi icmonftrgo vanGi, he aws het ebrrob orb eth amrro psoh adn ehgrca dtoraw hsi edgarn.''',
+        6: '''ucaSsL's yaivrD: KI nePtps lnla hgDtni cgmrooinoft anGivi, eJh adws tqhe eboGbrr okbr hlte rawmro spsoh aHnd ergRcah rtwPdoa sHih aeridgn.''',
+        7: '''aLsWEsu'c iryRADa: VZI psDcnte aoOll thDyngi mofrgLQitocn anGhkiv, hEhe sWgwa eIqht bbeaMorr oDzbr tkleh rrYNaom osrgph aiund rgaURech daruNtwo hCHsi rgdydean.''',
+        8: '''acsDQXuL's ryaDfQDi: zjbI teCfxpsn aoRlll nhEstitg tfnmcVGvgrioo iGvUwCan, evjnh sopNaw eafKth borxVZber bwPbro tLhneh arooumro hoswTsp axdKdn carNmvghe atoCOxwdr iyuIhs nreWOEdag.''',
+        9: '''csuFlQzsa'L DirNDufay: BcRyI ntsRpdesp aORIhll htiaapgin ftronVqkviocmg GnimVNFav, eCkFLh wLxaaas hnbVLet brbhfNCoer ouWYprb hmLWZte maWsfErro hoIDkYps aQvrwdn ghcpOwqera twoYHLVrda hFYevsi rgeZydUnad.''',
+        10: '''lLMUtLi pFTavT X bYmAd lZb CkgrS oNXRsbjCvY gnkSpJ Tl Vln TUL sCthCH gMw TIx vtyvR KZQX zjG fuKjPl SniMUW jOS GEiSmtC''',
     },
 }
         # Initialize game state
@@ -121,7 +121,7 @@ class GameScreen(GameScreenTemplate):
         """
         Timer tick to handle the initial map loading.
         """
-        print("Timer tick triggered.")  # Debugging
+        #print("Timer tick triggered.")  # Debugging
         self.timer_1.set_event_handler("tick", None)  # Disable the timer
         self.timer_1.enabled = False
         self.load_map()
@@ -130,7 +130,7 @@ class GameScreen(GameScreenTemplate):
         """
         Show the map and hide clue components.
         """
-        print("Showing map...")  # Debugging
+        #print("Showing map...")  # Debugging
         self.canvas_1.visible = True
         self.label_noise_level.visible = True
         self.button_back_to_map.visible = False
@@ -143,7 +143,7 @@ class GameScreen(GameScreenTemplate):
         """
         Prepare to show the clue for the selected region.
         """
-        print(f"Preparing to show clue for region: {region_data['name']}")  # Debugging
+        #print(f"Preparing to show clue for region: {region_data['name']}")  # Debugging
 
         # Hide the map components
         self.canvas_1.visible = True
@@ -162,7 +162,7 @@ class GameScreen(GameScreenTemplate):
         """
         Timer tick to load the clue after a short delay.
         """
-        print("Loading clue...")  # Debugging
+        #print("Loading clue...")  # Debugging
         self.timer_1.enabled = False  # Disable the timer
         self.timer_1.set_event_handler("tick", None)  # Unset the timer event
 
@@ -171,10 +171,10 @@ class GameScreen(GameScreenTemplate):
 
         # Render the clue based on type
         if self.current_region["type"] == "text":
-            print("Rendering text clue...")  # Debugging
+            #print("Rendering text clue...")  # Debugging
             self.display_clue_book(self.current_region["content"])
         elif self.current_region["type"] == "image":
-            print("Rendering image clue...")  # Debugging
+            #print("Rendering image clue...")  # Debugging
             self.display_clue_image(self.current_region["content"])
     
     def display_clue_book(self, region_name):
@@ -193,48 +193,58 @@ class GameScreen(GameScreenTemplate):
         # Show the "Back to Map" button
         self.button_back_to_map.visible = True
     
-        # Draw the book background image
         book_image_url = f"{anvil.server.get_app_origin()}/_/theme/minecraft_book.png"
-        book_image = anvil.URLMedia(book_image_url)
         canvas_width = self.canvas_1.width
         canvas_height = self.canvas_1.height
+    
+        # Define the desired book dimensions (e.g., 50% width, 70% height of the canvas)
         book_width = canvas_width * 0.35
         book_height = canvas_height * 0.7
+    
+        # Calculate position to center the book
         book_x = (canvas_width - book_width) / 2
-        book_y = (canvas_height - book_height) / 2 - 100
+        book_y = (canvas_height - book_height) /2 -100
     
-        self.canvas_1.draw_image(book_image, book_x, book_y, book_width, book_height)
+        try:
+            #print(f"Loading book image from {book_image_url}...")  # Debugging
+            image = anvil.URLMedia(book_image_url)
+            self.canvas_1.clear_rect(0, 0, canvas_width, canvas_height)  # Clear previous content
+            self.canvas_1.draw_image(image, book_x, book_y, book_width, book_height)
+            #print("Book image rendered.")  # Debugging
+        except Exception as e:
+            print(f"Error rendering book image: {e}")
     
-        # Render the degraded text on the canvas, ensuring line breaks are respected
-        self.canvas_1.fill_style = "#000000"
-        self.canvas_1.font = "14px sans-serif"
-        text_x = book_x + book_width * 0.1
-        text_y = book_y + book_height * 0.2
-        line_height = 20
-        max_line_width = book_width * 0.8  # Limit text width to fit inside the book
+        try:
+            # Adjust text position and size relative to the scaled book
+            self.canvas_1.fill_style = "#000000"  # Black text
+            self.canvas_1.font = "14px sans-serif"  # Smaller font for better fit
+            text_x = book_x + book_width * 0.1 + 20  # Add padding inside the book
+            text_y = book_y + book_height * 0.2 -10
+            line_height = 20
+            max_line_length = 30
     
-        for line in degraded_text.splitlines():
-            words = line.split()
-            current_line = ""
-    
+            # Wrap and render text inside the book
+            words = degraded_text.split()
+            line = ""
             for word in words:
-                # Check if adding the next word would exceed the line width
-                if self.canvas_1.measure_text(current_line + " " + word).width > max_line_width:
-                    # Draw the current line and reset
-                    self.canvas_1.fill_text(current_line.strip(), text_x, text_y)
-                    text_y += line_height
-                    current_line = word
+                test_line = f"{line} {word}".strip()
+                if len(test_line) <= max_line_length:
+                    line = test_line
                 else:
-                    current_line += " " + word
-    
-            # Draw any remaining text in the current line
-            if current_line:
-                self.canvas_1.fill_text(current_line.strip(), text_x, text_y)
-                text_y += line_height
+                    self.canvas_1.fill_text(line, text_x, text_y)
+                    text_y += line_height
+                    line = word
+            if line:
+                self.canvas_1.fill_text(line, text_x, text_y)
+            print("Clue text rendered successfully.")
+        except Exception as e:
+            print(f"Error rendering clue text: {e}")
+
     def display_clue_image(self, image_name):
         """
         Display an image-based clue, selecting the appropriate blur level based on the noise level.
         """
+        self.button_back_to_map.visible = True
         # Determine the current noise level (clamp between 1 and 10 to match the assets)
         noise_level = max(1, min(self.game_state["noise_level"], 10))
         
@@ -249,9 +259,12 @@ class GameScreen(GameScreenTemplate):
             print(f"Loading clue image from {image_url}...")  # Debugging
             image = anvil.URLMedia(image_url)
             self.canvas_1.draw_image(image, 0, 0, canvas_width, canvas_height)
-            print("Clue image rendered successfully.")  # Debugging
+            #print("Clue image rendered successfully.")  # Debugging
         except Exception as e:
             print(f"Error rendering clue image: {e}")
+
+        #if image_name == 'armory.png':  
+            #alert('It appears something was stolen...')
     
 
     def update_noise_level_display(self):
@@ -261,7 +274,6 @@ class GameScreen(GameScreenTemplate):
         self.label_noise_level.text = f"Noise Level: {self.game_state['noise_level']}"
     
     def canvas_mouse_down(self, x, y, button, **event_args):
-        """Handle mouse clicks on the canvas."""
         scaled_x = x / self.scale_x
         scaled_y = y / self.scale_y
     
@@ -273,8 +285,12 @@ class GameScreen(GameScreenTemplate):
                 print(f"{region_name} clicked!")  # Debugging
                 self.game_state["noise_level"] += 1
                 self.update_noise_level_display()
-                self.display_clue_book(region_name)  # Pass region name to display the clue
+                if region_data["type"] == "text":
+                    self.display_clue_book(region_name)
+                elif region_data["type"] == "image":
+                    self.display_clue_image(region_data["content"])  # Pass the image name
                 return
+
 
     def button_back_to_map_click(self, **event_args):
         """
@@ -299,7 +315,7 @@ class GameScreen(GameScreenTemplate):
     
     def load_map(self):
         """Load and scale the map image onto the canvas."""
-        print("Attempting to load the map image...")  # Debugging
+        #print("Attempting to load the map image...")  # Debugging
         image_media = URLMedia(self.map_url)
     
         try:
@@ -322,6 +338,6 @@ class GameScreen(GameScreenTemplate):
     
             self.canvas_1.clear_rect(0, 0, canvas_width, canvas_height)
             self.canvas_1.draw_image(image_media, draw_x, draw_y, draw_width, draw_height)
-            print("Map loaded and drawn successfully.")
+            #print("Map loaded and drawn successfully.")
         except Exception as e:
             print(f"Error loading map: {e}")
