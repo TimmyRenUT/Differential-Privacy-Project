@@ -11,6 +11,22 @@ class GameScreen(GameScreenTemplate):
         self.url = server.get_app_origin()
         # URL for the labeled map image
         self.map_url = f"{self.url}/_/theme/labeled_map.png"
+        
+        self.profile_zones = [
+        {"name": "Gavin", "x": 0, "y": 0, "width": 266, "height": 100},
+        {"name": "Lucas", "x": 266, "y": 0, "width": 266, "height": 100},
+        {"name": "Oliver", "x": 532, "y": 0, "width": 266, "height": 100},
+        {"name": "Ethan", "x": 0, "y": 100, "width": 266, "height": 100},
+        {"name": "Mason", "x": 266, "y": 100, "width": 266, "height": 100},
+        {"name": "Eliza", "x": 532, "y": 100, "width": 266, "height": 100},
+        {"name": "Aiden", "x": 0, "y": 200, "width": 266, "height": 100},
+        {"name": "Victoria", "x": 266, "y": 200, "width": 266, "height": 100},
+        {"name": "Sophie", "x": 532, "y": 200, "width": 266, "height": 100},
+    ]
+        self.innocent_profiles = [] 
+    
+        # Bind the mouse click event for the profiles canvas
+        self.canvas_profiles.set_event_handler("mouse_down", self.canvas_profiles_mouse_down)
 
         # Canvas size
         self.canvas_1.width = 800
@@ -125,6 +141,7 @@ class GameScreen(GameScreenTemplate):
         self.timer_1.set_event_handler("tick", None)  # Disable the timer
         self.timer_1.enabled = False
         self.load_map()
+        self.load_profiles_image()
 
     def show_map(self):
         """
@@ -350,3 +367,103 @@ class GameScreen(GameScreenTemplate):
         open_form('Form1')
       else:
         alert('Hmmmm that does not seem to be the correct person, try finding more information and select someone else')
+
+    def load_profiles_image(self):
+        """
+        Load and draw the profiles image onto the profiles canvas.
+        """
+        profiles_image_url = f"{self.url}/_/theme/profiles.png"
+        self.canvas_profiles.width = self.canvas_1.width
+        self.canvas_profiles.height = 300  # Adjust to fit the image
+    
+        try:
+            # Load and draw the profiles image
+            image = anvil.URLMedia(profiles_image_url)
+            self.canvas_profiles.clear_rect(0, 0, self.canvas_profiles.width, self.canvas_profiles.height)
+            self.canvas_profiles.draw_image(image, 0, 0, self.canvas_profiles.width, self.canvas_profiles.height)
+            print("Profiles image loaded successfully.")
+        except Exception as e:
+            print(f"Error loading profiles image: {e}")
+
+    def canvas_profiles_mouse_down(self, x, y, button, **event_args):
+        """
+        Handle mouse clicks on the profiles canvas.
+        """
+        for profile in self.profile_zones:
+            if (
+                profile["x"] <= x < profile["x"] + profile["width"]
+                and profile["y"] <= y < profile["y"] + profile["height"]
+            ):
+                self.mark_innocent(profile)
+                return
+
+    def mark_innocent(self, profile):
+        """
+        Toggle the innocence state of a selected profile. If the profile is already
+        marked as innocent, remove the overlay and label. Otherwise, add them.
+        """
+        if profile["name"] in self.innocent_profiles:
+            # Remove the profile from the innocent list
+            self.innocent_profiles.remove(profile["name"])
+            # Clear only the specific profile area and redraw the base image
+            self.clear_profile_section(profile)
+        else:
+            # Add the profile to the innocent list
+            self.innocent_profiles.append(profile["name"])
+            # Draw overlay for the newly marked profile
+            self.draw_innocent_overlay(profile)
+
+
+
+
+    def mark_innocent(self, profile):
+        """
+        Toggle the innocence state of a selected profile. If the profile is already
+        marked as innocent, remove the overlay and label. Otherwise, add them.
+        """
+        if profile["name"] in self.innocent_profiles:
+            # Remove the profile from the innocent list
+            self.innocent_profiles.remove(profile["name"])
+            # Clear only the specific profile area and redraw the base image
+            self.clear_profile_section(profile)
+        else:
+            # Add the profile to the innocent list
+            self.innocent_profiles.append(profile["name"])
+            # Draw overlay for the newly marked profile
+            self.draw_innocent_overlay(profile)
+    
+        
+    def draw_innocent_overlay(self, profile):
+        """
+        Draw a gray overlay and "INNOCENT" text on a profile.
+        """
+        # Draw the gray overlay
+        self.canvas_profiles.fill_style = "rgba(128, 128, 128, 0.5)"  # Transparent gray
+        self.canvas_profiles.fill_rect(profile["x"], profile["y"], profile["width"], profile["height"])
+    
+        # Draw "INNOCENT" text in the center of the profile
+        self.canvas_profiles.fill_style = "#FFFFFF"  # White text
+        self.canvas_profiles.font = "20px Arial"
+        text_x = profile["x"] + profile["width"] / 2
+        text_y = profile["y"] + profile["height"] / 2
+        self.canvas_profiles.fill_text("INNOCENT", text_x, text_y)
+
+
+
+    def clear_profile_section(self, profile):
+        """
+        Clear a specific section of the canvas and redraw only that part of the original image.
+        """
+        # Load the original profiles image
+        profiles_image_url = f"{self.url}/_/theme/profiles.png"
+        image = anvil.URLMedia(profiles_image_url)
+    
+        # Clear only the specific area of the canvas
+        self.canvas_profiles.clear_rect(profile["x"], profile["y"], profile["width"], profile["height"])
+    
+        # Redraw the exact section of the original image
+        self.canvas_profiles.draw_image(
+            image,
+            profile["x"], profile["y"], profile["width"], profile["height"],  # Destination rectangle on the canvas
+            profile["x"], profile["y"], profile["width"], profile["height"],  # Source rectangle on the image
+        )
