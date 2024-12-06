@@ -381,7 +381,7 @@ class GameScreen(GameScreenTemplate):
             image = anvil.URLMedia(profiles_image_url)
             self.canvas_profiles.clear_rect(0, 0, self.canvas_profiles.width, self.canvas_profiles.height)
             self.canvas_profiles.draw_image(image, 0, 0, self.canvas_profiles.width, self.canvas_profiles.height)
-            print("Profiles image loaded successfully.")
+            #print("Profiles image loaded successfully.")
         except Exception as e:
             print(f"Error loading profiles image: {e}")
 
@@ -397,24 +397,6 @@ class GameScreen(GameScreenTemplate):
                 self.mark_innocent(profile)
                 return
 
-    def mark_innocent(self, profile):
-        """
-        Toggle the innocence state of a selected profile. If the profile is already
-        marked as innocent, remove the overlay and label. Otherwise, add them.
-        """
-        if profile["name"] in self.innocent_profiles:
-            # Remove the profile from the innocent list
-            self.innocent_profiles.remove(profile["name"])
-            # Clear only the specific profile area and redraw the base image
-            self.clear_profile_section(profile)
-        else:
-            # Add the profile to the innocent list
-            self.innocent_profiles.append(profile["name"])
-            # Draw overlay for the newly marked profile
-            self.draw_innocent_overlay(profile)
-
-
-
 
     def mark_innocent(self, profile):
         """
@@ -424,12 +406,16 @@ class GameScreen(GameScreenTemplate):
         if profile["name"] in self.innocent_profiles:
             # Remove the profile from the innocent list
             self.innocent_profiles.remove(profile["name"])
-            # Clear only the specific profile area and redraw the base image
-            self.clear_profile_section(profile)
+            # Redraw the profiles image to clear the overlay
+            self.load_profiles_image()
+            # Redraw overlays for remaining innocent profiles
+            for innocent_profile_name in self.innocent_profiles:
+                for p in self.profile_zones:
+                    if p["name"] == innocent_profile_name:
+                        self.draw_innocent_overlay(p)
         else:
             # Add the profile to the innocent list
             self.innocent_profiles.append(profile["name"])
-            # Draw overlay for the newly marked profile
             self.draw_innocent_overlay(profile)
     
         
@@ -452,18 +438,18 @@ class GameScreen(GameScreenTemplate):
 
     def clear_profile_section(self, profile):
         """
-        Clear a specific section of the canvas and redraw only that part of the original image.
+        Clear a specific section of the canvas and redraw the base image for that section.
         """
         # Load the original profiles image
         profiles_image_url = f"{self.url}/_/theme/profiles.png"
         image = anvil.URLMedia(profiles_image_url)
     
-        # Clear only the specific area of the canvas
+        # Clear the specific area of the canvas
         self.canvas_profiles.clear_rect(profile["x"], profile["y"], profile["width"], profile["height"])
-    
-        # Redraw the exact section of the original image
+        
+        # Redraw only the cleared section of the image
         self.canvas_profiles.draw_image(
             image,
             profile["x"], profile["y"], profile["width"], profile["height"],  # Destination rectangle on the canvas
-            profile["x"], profile["y"], profile["width"], profile["height"],  # Source rectangle on the image
+            profile["x"], profile["y"], profile["width"], profile["height"],  # Source rectangle from the image
         )
