@@ -366,7 +366,7 @@ class GameScreen(GameScreenTemplate):
       if self.drop_down_1.selected_value == 'Mason':
         open_form('Form1')
       else:
-        alert('Hmmmm that does not seem to be the correct person, try finding more information and select someone else')
+        alert(f'Hmmmm {self.drop_down_1.selected_value} does not seem to be the correct person, try finding more information and select someone else')
 
     def load_profiles_image(self):
         """
@@ -429,8 +429,8 @@ class GameScreen(GameScreenTemplate):
     
         # Draw "INNOCENT" text in the center of the profile
         self.canvas_profiles.fill_style = "#FFFFFF"  # White text
-        self.canvas_profiles.font = "20px Arial"
-        text_x = profile["x"] + profile["width"] / 2
+        self.canvas_profiles.font = "20px Tiny5"
+        text_x = profile["x"] + profile["width"] / 2 -80
         text_y = profile["y"] + profile["height"] / 2
         self.canvas_profiles.fill_text("INNOCENT", text_x, text_y)
 

@@ -14,5 +14,5 @@ services:
 - client_config: {}
   server_config: {}
   source: /runtime/services/tables.yml
-startup: {module: GameScreen, type: form}
+startup: {module: Welcome, type: form}
 startup_form: null

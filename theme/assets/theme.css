@@ -169,6 +169,7 @@ input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focu
   background: %color:On Disabled%;
 }
 .anvil-role-terminal-textbox {
+  font-size: 24px;
   border-bottom: none !important;
   text-decoration: none !important;
   background-color: black;
