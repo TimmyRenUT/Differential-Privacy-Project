@@ -139,24 +139,6 @@ class GameScreen(GameScreenTemplate):
         # Draw the map
         self.load_map()
 
-    def show_clue(self, region_data):
-        """
-        Prepare to show the clue for the selected region.
-        """
-        #print(f"Preparing to show clue for region: {region_data['name']}")  # Debugging
-
-        # Hide the map components
-        self.canvas_1.visible = True
-        self.label_noise_level.visible = True
-        self.button_back_to_map.visible = True
-
-        # Store region data for use in the timer
-        self.current_region = region_data
-
-        # Reset the timer to delay clue rendering
-        self.timer_1.set_event_handler("tick", self.load_clue_tick)
-        self.timer_1.interval = 0.1
-        self.timer_1.enabled = True
 
     def load_clue_tick(self, **event_args):
         """
@@ -217,7 +199,7 @@ class GameScreen(GameScreenTemplate):
         try:
             # Adjust text position and size relative to the scaled book
             self.canvas_1.fill_style = "#000000"  # Black text
-            self.canvas_1.font = "14px sans-serif"  # Smaller font for better fit
+            self.canvas_1.font = "14px Tiny5"  # Smaller font for better fit
             text_x = book_x + book_width * 0.1 + 20  # Add padding inside the book
             text_y = book_y + book_height * 0.2 -10
             line_height = 20
@@ -264,9 +246,15 @@ class GameScreen(GameScreenTemplate):
         except Exception as e:
             print(f"Error rendering clue image: {e}")
 
-        #if image_name == 'armory.png':  
-            #alert('It appears something was stolen...')
-    
+        if image_name == 'armory.png':  
+          try:
+              # Draw the "It appears something was stolen..." message on the canvas
+              self.canvas_1.fill_style = "#ffffff"
+              self.canvas_1.font = "45px Tiny5"
+              self.canvas_1.fill_text("It appears something was stolen...", 30, 75)  # Top left position
+          except Exception as e:
+              print(f"Error rendering text on canvas: {e}")
+      
 
     def update_noise_level_display(self):
         """
@@ -286,6 +274,7 @@ class GameScreen(GameScreenTemplate):
                 #print(f"{region_name} clicked!")  # Debugging
                 self.game_state["noise_level"] += 1
                 self.update_noise_level_display()
+                self.disable_canvas_mouse_down()
                 if region_data["type"] == "text":
                     self.display_clue_book(region_name)
                 elif region_data["type"] == "image":
@@ -300,6 +289,7 @@ class GameScreen(GameScreenTemplate):
         #print("Returning to map...")  # Debugging
         self.canvas_1.visible = True
         self.button_back_to_map.visible = False
+        self.enable_canvas_mouse_down()
         # Reset the timer to delay map loading
         self.timer_1.set_event_handler("tick", self.reload_map_tick)
         self.timer_1.interval = 0.1
@@ -343,6 +333,20 @@ class GameScreen(GameScreenTemplate):
         except Exception as e:
             print(f"Error loading map: {e}")
 
-    def text_box_1_pressed_enter(self, **event_args):
-      if self.text_box_1.text == 'Mason':
+    def disable_canvas_mouse_down(self):
+        """
+        Disable the canvas mouse_down event handler.
+        """
+        self.canvas_1.set_event_handler("mouse_down", None)
+
+    def enable_canvas_mouse_down(self):
+        """
+        Enable the canvas mouse_down event handler.
+        """
+        self.canvas_1.set_event_handler("mouse_down", self.canvas_mouse_down)
+
+    def button_1_click(self, **event_args):
+      if self.drop_down_1.selected_value == 'Mason':
         open_form('Form1')
+      else:
+        alert('Hmmmm that does not seem to be the correct person, try finding more information and select someone else')

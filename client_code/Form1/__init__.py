@@ -27,10 +27,11 @@ class Form1(Form1Template):
     #print(l)
     for i in l:
       random.seed(48)
+      sleep_time = 1/(i+550)
       for x in range(i+1):
         output = random.choice(self.characters)
         self.label_fill.text += output
-        time.sleep(0.001)
+        time.sleep(sleep_time)
         self.label_fill.text = self.label_fill.text[:-1]
       self.label_fill.text += output
 

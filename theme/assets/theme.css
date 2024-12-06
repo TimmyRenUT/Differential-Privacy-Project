@@ -23,8 +23,15 @@ body {
 }
 
 .anvil-role-headline {
-  font-family: Eczar, serif;
+  font-family: Tiny5, serif;
   font-size: 32px;
+  line-height: 40px;
+  font-weight: 400;
+}
+
+.anvil-role-mc {
+  font-family: Tiny5;
+  font-size: 25px;
   line-height: 40px;
   font-weight: 400;
 }
@@ -91,6 +98,7 @@ a:active:not(disabled), a:focus:not(disabled){
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 2px;
+  font-family: Tiny5;
   
   border: 0;
   background-color: transparent;
@@ -169,7 +177,7 @@ input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focu
   border-radius: 5px;
   padding: 5px;
   caret-color: limegreen;
-  font-family: 'Courier New', Courier, monospace; 
+  font-family: Tiny5, monospace; 
 }
 
 input[disabled] ~ span {
