@@ -6,10 +6,10 @@ class GameScreenRegions(GameScreenRegionsTemplate):
     def __init__(self, **properties):
         # Initialize the form
         self.init_components(**properties)
-
+        url = server.get_app_origin()
         # URL for the labeled map image
-        self.map_url = "https://oc7rgrehldg4ytmb.anvil.app/debug/K2FNYJZNCCGLX5BYMAFYMCFF7DNW2IBX%3DPIRZDIS77WSD2QG5SQY6DZIQ/_/theme/labeled_map.png"
-
+        self.map_url = f"{url}/_/theme/labeled_map.png"
+      
         # Canvas size
         self.canvas_1.width = 800
         self.canvas_1.height = 600
@@ -17,14 +17,13 @@ class GameScreenRegions(GameScreenRegionsTemplate):
         # Store scaling factors
         self.scale_x = 1
         self.scale_y = 1
-
         # Define clickable regions in one place
         self.regions = [
-            {"name": "Vault", "x": 450, "y": 170, "width": 250, "height": 250, "color": "red"},
-            {"name": "Garden", "x": 50, "y": 680, "width": 550, "height": 270, "color": "blue"},
-            {"name": "Potion Shop", "x": 1080, "y": 500, "width": 200, "height": 150, "color": "green"},
-            {"name": "Library", "x": 600, "y": 480, "width": 200, "height": 150, "color": "yellow"},
-            {"name": "Armor Shop", "x": 850, "y": 580, "width": 200, "height": 200, "color": "purple"}
+            {"name": "Vault", "x": 450, "y": 20, "width": 250, "height": 250, "color": "red"},
+            {"name": "Garden", "x": 50, "y": 560, "width": 550, "height": 270, "color": "blue"},
+            {"name": "Potion Shop", "x": 1080, "y": 380, "width": 200, "height": 150, "color": "green"},
+            {"name": "Library", "x": 600, "y": 360, "width": 200, "height": 150, "color": "yellow"},
+            {"name": "Armor Shop", "x": 850, "y": 460, "width": 200, "height": 200, "color": "purple"}
         ]
 
         # Bind the mouse click event
@@ -64,7 +63,7 @@ class GameScreenRegions(GameScreenRegionsTemplate):
             draw_width = img_width * self.scale_x
             draw_height = img_height * self.scale_y
             draw_x = (canvas_width - draw_width) / 2
-            draw_y = (canvas_height - draw_height) / 2
+            draw_y = (canvas_height - draw_height) / 2 - 75
 
             # Clear the canvas
             self.canvas_1.clear_rect(0, 0, canvas_width, canvas_height)

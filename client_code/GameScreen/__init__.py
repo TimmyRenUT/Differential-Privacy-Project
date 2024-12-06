@@ -2,15 +2,15 @@ from anvil import *
 import anvil
 from anvil import URLMedia
 from ._anvil_designer import GameScreenTemplate
-
+import anvil.server
 
 class GameScreen(GameScreenTemplate):
     def __init__(self, **properties):
         # Initialize the form
         self.init_components(**properties)
-        url = server.get_app_origin()
+        self.url = server.get_app_origin()
         # URL for the labeled map image
-        self.map_url = f"{url}/_/theme/labeled_map.png"
+        self.map_url = f"{self.url}/_/theme/labeled_map.png"
 
         # Canvas size
         self.canvas_1.width = 800
@@ -64,7 +64,7 @@ class GameScreen(GameScreenTemplate):
             "Vault": {
                 "name": 'Vault',
                 "x": 450,
-                "y": 170,
+                "y": 20,
                 "width": 250,
                 "height": 250,
                 "type": "text",
@@ -73,7 +73,7 @@ class GameScreen(GameScreenTemplate):
             "Garden": {
                 "name": 'Garden',
                 "x": 50,
-                "y": 680,
+                "y": 560,
                 "width": 550,
                 "height": 270,
                 "type": "image",
@@ -82,7 +82,7 @@ class GameScreen(GameScreenTemplate):
             "Potion Shop": {
                 "name": 'Potion Shop',
                 "x": 1080,
-                "y": 500,
+                "y": 380,
                 "width": 200,
                 "height": 150,
                 "type": "text",
@@ -91,7 +91,7 @@ class GameScreen(GameScreenTemplate):
             "Library": {
                 "name": 'Library',
                 "x": 600,
-                "y": 480,
+                "y": 360,
                 "width": 200,
                 "height": 150,
                 "type": "text",
@@ -100,7 +100,7 @@ class GameScreen(GameScreenTemplate):
             "Armor Shop": {
                 "name": 'Armor Shop',
                 "x": 850,
-                "y": 580,
+                "y": 460,
                 "width": 200,
                 "height": 200,
                 "type": "image",
@@ -193,7 +193,7 @@ class GameScreen(GameScreenTemplate):
         # Show the "Back to Map" button
         self.button_back_to_map.visible = True
     
-        book_image_url = f"{anvil.server.get_app_origin()}/_/theme/minecraft_book.png"
+        book_image_url = f"{self.url}/_/theme/minecraft_book.png"
         canvas_width = self.canvas_1.width
         canvas_height = self.canvas_1.height
     
@@ -236,7 +236,7 @@ class GameScreen(GameScreenTemplate):
                     line = word
             if line:
                 self.canvas_1.fill_text(line, text_x, text_y)
-            print("Clue text rendered successfully.")
+            #print("Clue text rendered successfully.")
         except Exception as e:
             print(f"Error rendering clue text: {e}")
 
@@ -256,8 +256,9 @@ class GameScreen(GameScreenTemplate):
         canvas_height = self.canvas_1.height
     
         try:
-            print(f"Loading clue image from {image_url}...")  # Debugging
+            #print(f"Loading clue image from {image_url}...")  # Debugging
             image = anvil.URLMedia(image_url)
+            self.canvas_1.clear_rect(0, 0, canvas_width, canvas_height)  # Clear previous content
             self.canvas_1.draw_image(image, 0, 0, canvas_width, canvas_height)
             #print("Clue image rendered successfully.")  # Debugging
         except Exception as e:
@@ -282,7 +283,7 @@ class GameScreen(GameScreenTemplate):
                 region_data["x"] < scaled_x < region_data["x"] + region_data["width"]
                 and region_data["y"] < scaled_y < region_data["y"] + region_data["height"]
             ):
-                print(f"{region_name} clicked!")  # Debugging
+                #print(f"{region_name} clicked!")  # Debugging
                 self.game_state["noise_level"] += 1
                 self.update_noise_level_display()
                 if region_data["type"] == "text":
@@ -296,7 +297,7 @@ class GameScreen(GameScreenTemplate):
         """
         Handle 'Back to Map' button click.
         """
-        print("Returning to map...")  # Debugging
+        #print("Returning to map...")  # Debugging
         self.canvas_1.visible = True
         self.button_back_to_map.visible = False
         # Reset the timer to delay map loading
@@ -308,7 +309,7 @@ class GameScreen(GameScreenTemplate):
         """
         Timer tick to reload the map after returning from clue view.
         """
-        print("Reloading map...")  # Debugging
+        #print("Reloading map...")  # Debugging
         self.timer_1.enabled = False
         self.timer_1.set_event_handler("tick", None)
         self.show_map()
@@ -334,10 +335,14 @@ class GameScreen(GameScreenTemplate):
             draw_width = img_width * self.scale_x
             draw_height = img_height * self.scale_y
             draw_x = (canvas_width - draw_width) / 2
-            draw_y = (canvas_height - draw_height) / 2
+            draw_y = (canvas_height - draw_height) / 2 -75
     
             self.canvas_1.clear_rect(0, 0, canvas_width, canvas_height)
             self.canvas_1.draw_image(image_media, draw_x, draw_y, draw_width, draw_height)
             #print("Map loaded and drawn successfully.")
         except Exception as e:
             print(f"Error loading map: {e}")
+
+    def text_box_1_pressed_enter(self, **event_args):
+      if self.text_box_1.text == 'Mason':
+        open_form('Form1')

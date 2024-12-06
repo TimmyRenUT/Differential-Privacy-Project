@@ -4,7 +4,7 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-
+import time
 
 
 class Welcome(WelcomeTemplate):
@@ -15,7 +15,7 @@ class Welcome(WelcomeTemplate):
 
 A robber has stolen the kingdom's all powerful Netherite Sword. This sword has been enchanted to hide the identity of those who hold it. We need to find as much information about the robber as possible before the swords enchantment hides it.
 
-There a 5 important locations to look at. The garden, vault, armor shop, potion shop, and the library. Watch out, as you engage with more people, the enchantment will become stronger and information will be harder and harder to get.
+There are 5 important locations to look at. The garden, vault, armor shop, potion shop, and the library. Watch out, as you engage with the map more, the enchantment will become stronger and information will be harder and harder to get.
 
 Press "Start Mission" to begin!"""
     # Counter for the position of next character to display
@@ -39,6 +39,8 @@ Press "Start Mission" to begin!"""
     else:
       # Stop the typing effect
       anvil.js.call_js('stopTypingEffect')
+      time.sleep(0.01)
+      self.button_1.visible = True
     # Any code you write here will run before the form opens.
 
   def button_1_click(self, **event_args):
