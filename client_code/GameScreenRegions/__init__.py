@@ -3,6 +3,9 @@ import anvil
 from anvil import URLMedia
 from ._anvil_designer import GameScreenRegionsTemplate
 class GameScreenRegions(GameScreenRegionsTemplate):
+    """
+    Testing area for determining where the clickable regions are, not in the actual app
+    """
     def __init__(self, **properties):
         # Initialize the form
         self.init_components(**properties)

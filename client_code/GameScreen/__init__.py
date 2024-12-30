@@ -124,13 +124,11 @@ class GameScreen(GameScreenTemplate):
             }
         }
 
-        # Bind the mouse click event
         self.canvas_1.set_event_handler("mouse_down", self.canvas_mouse_down)
 
         # Set initial text for the noise level display
         self.update_noise_level_display()
 
-        # Hide clue components initially
         self.show_map()
 
     def timer_1_tick(self, **event_args):
@@ -153,7 +151,6 @@ class GameScreen(GameScreenTemplate):
         self.button_back_to_map.visible = False
         self.canvas_1.clear_rect(0, 0, self.canvas_1.width, self.canvas_1.height)
 
-        # Draw the map
         self.load_map()
 
 
@@ -180,16 +177,11 @@ class GameScreen(GameScreenTemplate):
         """
         Display the text clue for the specified region and current noise level.
         """
-        # Get the current noise level
         noise_level = max(1, min(self.game_state["noise_level"], 10))  # Ensure noise level is within bounds
-    
-        # Fetch the degraded text from self.clues_data
         degraded_text = self.clues_data.get(region_name, {}).get(noise_level, "No clue available for this region.")
     
         # Clear the canvas
         self.canvas_1.clear_rect(0, 0, self.canvas_1.width, self.canvas_1.height)
-    
-        # Show the "Back to Map" button
         self.button_back_to_map.visible = True
     
         book_image_url = f"{self.url}/_/theme/minecraft_book.png"
@@ -222,7 +214,6 @@ class GameScreen(GameScreenTemplate):
             line_height = 20
             max_line_length = 30
     
-            # Wrap and render text inside the book
             words = degraded_text.split()
             line = ""
             for word in words:
@@ -247,7 +238,6 @@ class GameScreen(GameScreenTemplate):
         # Determine the current noise level (clamp between 1 and 10 to match the assets)
         noise_level = max(1, min(self.game_state["noise_level"], 10))
         
-        # Construct the image name based on the noise level
         image_file = image_name.replace(".png", f"_blurred_level_{noise_level}.png")
         image_url = f"{anvil.server.get_app_origin()}/_/theme/{image_file}"
         
@@ -265,7 +255,6 @@ class GameScreen(GameScreenTemplate):
 
         if image_name == 'armory.png':  
           try:
-              # Draw the "It appears something was stolen..." message on the canvas
               self.canvas_1.fill_style = "#ffffff"
               self.canvas_1.font = "45px Tiny5"
               self.canvas_1.fill_text("It appears something was stolen...", 30, 75)  # Top left position
@@ -323,7 +312,7 @@ class GameScreen(GameScreenTemplate):
     
     def load_map(self):
         """Load and scale the map image onto the canvas."""
-        #print("Attempting to load the map image...")  # Debugging
+        #print("Attempting to load the map image...")
         image_media = URLMedia(self.map_url)
     
         try:
@@ -377,7 +366,6 @@ class GameScreen(GameScreenTemplate):
         self.canvas_profiles.height = 300  # Adjust to fit the image
     
         try:
-            # Load and draw the profiles image
             image = anvil.URLMedia(profiles_image_url)
             self.canvas_profiles.clear_rect(0, 0, self.canvas_profiles.width, self.canvas_profiles.height)
             self.canvas_profiles.draw_image(image, 0, 0, self.canvas_profiles.width, self.canvas_profiles.height)
@@ -450,6 +438,6 @@ class GameScreen(GameScreenTemplate):
         # Redraw only the cleared section of the image
         self.canvas_profiles.draw_image(
             image,
-            profile["x"], profile["y"], profile["width"], profile["height"],  # Destination rectangle on the canvas
-            profile["x"], profile["y"], profile["width"], profile["height"],  # Source rectangle from the image
+            profile["x"], profile["y"], profile["width"], profile["height"],
+            profile["x"], profile["y"], profile["width"], profile["height"],
         )

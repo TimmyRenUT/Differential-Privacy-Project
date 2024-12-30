@@ -1,7 +1,7 @@
 allow_embedding: false
 correct_dependency_ids: {}
 dependencies: []
-name: Clone of Differential Privacy
+name: Differential Privacy Game
 native_deps:
   head_html: "<link href=\"https://fonts.googleapis.com/css2?family=Eczar:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap\" rel=\"stylesheet\" rel=\"preload\" as=\"font\" crossorigin=\"anonymous\">\n\n<script>\n  var intervalId;\n\n  function startTypingEffect(callback) {\n    // Set an interval to call the provided callback function every 100ms\n    intervalId = setInterval(function() {\n      if (callback) {\n        callback();\n      }\n    }, 15);\n  }\n\n  function stopTypingEffect() {\n    if (intervalId) {\n      clearInterval(intervalId);\n    }\n  }\n  \n\n\n</script>\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=VT323&display=swap\" rel=\"stylesheet\">\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Tiny5&display=swap\" rel=\"stylesheet\">"
 package_name: Rally_App_1
